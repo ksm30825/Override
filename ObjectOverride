@@ -1,0 +1,93 @@
+package com.kh.silsub1.book.model.vo;
+
+public class Book {
+	private String title;
+	private String author;
+	private int price;
+	
+	public Book() {}
+
+	public Book(String title, String author, int price) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.price = price;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	@Override
+	public String toString() {
+		
+		return title+", "+author+", "+price;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		//필드의 주소값, 전달받은 주소값 동일한지 확인
+		if(this==obj) {
+			return true;
+		}
+		if(obj==null) {
+			return false;
+		}
+		
+		Book n = (Book)obj;
+		
+		if(title==null) {
+			if(n.title!=null) {
+				return false;
+			}
+		}else if(!title.equals(n.title)) {
+			return false;
+		}
+		
+		if(author==null) {
+			if(n.author!=null) {
+				return false;
+			}
+		}else if(!author.equals(n.author)) {
+			return false;
+		}
+		
+		if(price!=n.price) {
+			return false;
+		}
+		return true;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		int result1 = PRIME*result+((author==null)?0:author.hashCode());
+		int result2 = PRIME*result+price;
+		int result3 = PRIME*result+((title==null)?0:title.hashCode());
+		
+		//return result1+result2+result3와 같은 의미
+		return (author+price+title).hashCode();
+	}
+	
+}
